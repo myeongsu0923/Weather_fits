@@ -3,8 +3,6 @@ from flask import Flask, request, jsonify
 
 kakaoBot = Flask(__name__)
 
-#hotfix branch test
-
 @kakaoBot.route("/")
 def hello():
     return "Hello goorm!"
@@ -15,24 +13,11 @@ def weatherPrint():
     
     location = req["action"]["detailParams"]["sys_location"]["value"]	# json파일 읽기
     
-    answer = search(location)
+    temp = Weather(location)
     
-    #answer = webLink(location)
+    answer = temp.getWeather()
     
     # 답변 텍스트 설정
-    '''res = {
-        "version": "2.0",
-        "template": {
-            "outputs": [
-                {
-                    "simpleText": {
-                        "text": answer
-                    }
-                }
-            ]
-        }
-    }'''
-    
     res = {
         "version": "2.0",
         "template": {
@@ -41,24 +26,7 @@ def weatherPrint():
                     "simpleText": {
                         "text": answer
                     }
-                },
-                {
-        "basicCard": {
-          "title": "더 많은 날씨정보 보러가기",
-          "buttons": [
-            {
-              "action":  "webLink",
-              "label": "기온",
-              "webLinkUrl": webLinkTem(location)
-            },
-            {
-              "action":  "webLink",
-              "label": "미세먼지",
-              "webLinkUrl": webLinkAir(location)
-            }
-          ]
-        }
-      }
+                }
             ]
         }
     }
