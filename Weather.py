@@ -47,4 +47,14 @@ def umbrella(currentWeather):
         return "\n*비오니깐 우산챙겨요!"
     else:
         return "\n*우산이 필요없을거 같아요!"
+    
+def webLinkTem(city):
+    cityNum = map_cityNum[city]
+    address = addr + cityNum
+    return address
+
+def webLinkAir(city):
+    cityNum = map_cityNum[city]
+    addressAir = addrAir + cityNum
+    return addressAir
 

@@ -17,8 +17,10 @@ def weatherPrint():
     
     answer = search(location)
     
+    #answer = webLink(location)
+    
     # 답변 텍스트 설정
-    res = {
+    '''res = {
         "version": "2.0",
         "template": {
             "outputs": [
@@ -27,6 +29,36 @@ def weatherPrint():
                         "text": answer
                     }
                 }
+            ]
+        }
+    }'''
+    
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": answer
+                    }
+                },
+                {
+        "basicCard": {
+          "title": "더 많은 날씨정보 보러가기",
+          "buttons": [
+            {
+              "action":  "webLink",
+              "label": "기온",
+              "webLinkUrl": webLinkTem(location)
+            },
+            {
+              "action":  "webLink",
+              "label": "미세먼지",
+              "webLinkUrl": webLinkAir(location)
+            }
+          ]
+        }
+      }
             ]
         }
     }
