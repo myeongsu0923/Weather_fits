@@ -3,6 +3,8 @@ from flask import Flask, request, jsonify
 
 kakaoBot = Flask(__name__)
 
+#hotfix branch test
+
 @kakaoBot.route("/")
 def hello():
     return "Hello goorm!"
