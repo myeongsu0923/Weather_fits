@@ -24,6 +24,7 @@ class Weather():
         self.addr += self.map_cityNum[area]
         self.addrAir += self.map_cityNum[area]
         self.result = None
+        self.fits = list()
 
         self.search()
     

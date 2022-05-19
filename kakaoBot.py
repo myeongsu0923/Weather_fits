@@ -17,6 +17,12 @@ def weatherPrint():
     
     answer = temp.getWeather()
     
+    outputFits = "==== 오늘 기온에 맞는 옷 추천 ====\n"
+    for fits in temp.getFits():
+        outputFits += fits.replace('"','').strip() + "\n"
+    
+    answerFits = outputFits
+    
     # 답변 텍스트 설정
     res = {
         "version": "2.0",
@@ -25,6 +31,11 @@ def weatherPrint():
                 {
                     "simpleText": {
                         "text": answer
+                    }
+                },
+                {
+                    "simpleText": {
+                        "text": answerFits
                     }
                 }
             ]
