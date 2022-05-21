@@ -8,6 +8,7 @@ class Weather():
     session = requests.Session() 
     addr = "https://weather.naver.com/today/"
     addrAir = "https://weather.naver.com/air/"
+    addrSun = 'https://search.naver.com/search.naver?query='
     map_cityNum = {}
     temp_wearingFits = list()
 
@@ -24,12 +25,15 @@ class Weather():
         self.area = area
         self.addr += self.map_cityNum[area]
         self.addrAir += self.map_cityNum[area]
+        self.addrSun += area + '날씨'
         self.tempResult = None
         self.dustResult = None
+        self.sunResult = None
         self.fits = list()
 
         self.tempSearch()
         self.dustSearch()
+        self.sunLight()
     
     def tempSearch(self):
         req = self.session.get(self.addr)
@@ -55,6 +59,14 @@ class Weather():
         self.dustResult =  ("미세먼지 - " + t_aryAir[15] + "㎍/㎥ (" + t_aryAir[16] + ")\n"
                             + "초미세먼지 - " + t_aryAir[32] + "㎍/㎥ (" + t_aryAir[33] + ")\n")
 
+
+    def sunLight(self):
+        reqSun = self.session.get(self.addrSun)
+        soup = BeautifulSoup(reqSun.text, 'html.parser')
+        sunlight = soup.find(class_="today_chart_list")
+        s_ary = list(sunlight.stripped_strings)
+
+        self.sunResult = s_ary[5]
 
     def umbrella(self, currentWeather):
         if currentWeather == '비':
@@ -99,3 +111,8 @@ class Weather():
         if not self.dustResult:
             return "잘못된 입력입니다"
         return self.dustResult
+
+    def getSunlight(self):
+        if not self.sunResult:
+            return "잘못된 입력입니다"
+        return self.sunResult
