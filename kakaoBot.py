@@ -4,7 +4,11 @@ from flask import Flask, request, jsonify
 kakaoBot = Flask(__name__)
 
 global outputFits #복장 목록
+global outputDust
+global outputSun
 outputFits = ""
+outputDust = ""
+outputSun = ""
 
 @kakaoBot.route("/")
 def hello():
@@ -18,7 +22,15 @@ def weatherPrint():
     
     temp = Weather(location)
     
-    answer = temp.getWeather() 
+    answer = temp.getWeather()
+    
+    global outputDust
+    outputDust = "[미세먼지 수치]\n"
+    outputDust += temp.getDust()
+    
+    global outputSun
+    outputSun = "[자외선]\n"
+    outputSun += temp.getSunlight()
     
     global outputFits
     outputFits = "[오늘 기온에 맞는 옷 추천]\n"
@@ -66,11 +78,13 @@ def Message():
     content=content.replace("\n","")
     
     global outputFits
+    global outputDust
+    global outputSun
     
     if content.find("옷") != -1 or content.find("외출복") != -1 or content.find("복장") != -1:
         content = "옷"
     
-    if outputFits == "":
+    if outputFits == "" or outputDust == "" or outputSun == "":
         dataSend = {
             "version" : "2.0",
             "template" : {
@@ -78,6 +92,36 @@ def Message():
                     {
                         "simpleText" : {
                             "text" : "지역이름을 먼저 검색해주세요"
+                        }
+                    }
+                ]
+            }
+        }
+        return jsonify(dataSend)
+    
+    if content == u"미세먼지":
+        dataSend = {
+            "version" : "2.0",
+            "template" : {
+                "outputs" : [
+                    {
+                        "simpleText" : {
+                            "text" : outputDust
+                        }
+                    }
+                ]
+            }
+        }
+        return jsonify(dataSend)
+    
+    if content == u"자외선":
+        dataSend = {
+            "version" : "2.0",
+            "template" : {
+                "outputs" : [
+                    {
+                        "simpleText" : {
+                            "text" : outputSun
                         }
                     }
                 ]
