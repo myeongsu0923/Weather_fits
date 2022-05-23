@@ -1,4 +1,4 @@
-from Weather import *
+from src.Weather import *
 from flask import Flask, request, jsonify
 
 kakaoBot = Flask(__name__)

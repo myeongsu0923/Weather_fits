@@ -12,11 +12,11 @@ class Weather():
     map_cityNum = {}
     temp_wearingFits = list()
 
-    with open('cityNumber.csv', mode='r', encoding="utf-8") as citys:
+    with open('csv/cityNumber.csv', mode='r', encoding="utf-8") as citys:
         reader = csv.reader(citys)
         map_cityNum = {rows[0]:rows[1].replace('"','').strip() for rows in reader}
 
-    with open('wearing.csv', mode='r', encoding="utf-8") as clothes:
+    with open('csv/wearing.csv', mode='r', encoding="utf-8") as clothes:
         reader = csv.reader(clothes)
         temp_wearingFits = list(reader)
 
