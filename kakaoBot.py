@@ -91,10 +91,21 @@ def Message():
             "template" : {
                 "outputs" : [
                     {
-                        "simpleText" : {
-                            "text" : stores[0][0]
-                        }
-                    }
+        "listCard": {
+          "header": {
+            "title": "대구대 근처 편의점"
+          },
+          "items": [
+            {
+              "title": stores[0][0],
+              "description": stores[0][1],
+              "link": {
+                "web": stores[0][2]
+              }
+            }
+          ],
+        }
+      }
                 ]
             }
         }
