@@ -1,4 +1,5 @@
 from src.Weather import *
+from src.searchObject import *
 from flask import Flask, request, jsonify
 
 kakaoBot = Flask(__name__)
@@ -83,6 +84,21 @@ def Message():
     
     if content.find("옷") != -1 or content.find("외출복") != -1 or content.find("복장") != -1:
         content = "옷"
+    
+    if content == u"편의점":
+        dataSend = {
+            "version" : "2.0",
+            "template" : {
+                "outputs" : [
+                    {
+                        "simpleText" : {
+                            "text" : stores[0][0]
+                        }
+                    }
+                ]
+            }
+        }
+        return jsonify(dataSend)
     
     if outputFits == "" or outputDust == "" or outputSun == "":
         dataSend = {
