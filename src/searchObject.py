@@ -27,7 +27,10 @@ def storeSearch(region):
 # * testing
 stores = storeSearch('대구대학교 정문')
 
+j = 0
+
 for store in stores:
     for i in store:
-        print(i)
+        print(j, i)
+        j = j + 1
     print("\n")
