@@ -1,10 +1,12 @@
 import requests
+import re
 
 api_key = 'b57c89bcdaa776e98f2de85501de1a4b'
 totals = list()
 
 def storeSearch(region):
     page_num = 1
+    region += '주변 편의점'
     placeName = list()
     placeAddr = list()
     placeUrl = list()
@@ -13,7 +15,7 @@ def storeSearch(region):
     headers = {"Authorization": "KakaoAK " + api_key}
     places = requests.get(url, params=params, headers=headers).json()['documents']
     
-    for i in range(0, len(places)):
+    for i in range(0, 3):
         placeName.append(places[i]['place_name'])
         placeAddr.append(places[i]['address_name'])
         placeUrl.append(places[i]['place_url'])
@@ -21,7 +23,11 @@ def storeSearch(region):
     total = list(zip(placeName, placeAddr, placeUrl))
 
     return total
-# * testing
-# store = storeSearch('하양역 주변 편의점')
 
-# print(store[0])
+# * testing
+stores = storeSearch('대구대학교 정문')
+
+for store in stores:
+    for i in store:
+        print(i)
+    print("\n")
