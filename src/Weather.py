@@ -80,7 +80,7 @@ class Weather():
 
         if (avr >= 28.0):
             fits = self.temp_wearingFits[0]
-        elif (avr >= 27.0):
+        elif (avr >= 23.0):
             fits = self.temp_wearingFits[1]
         elif (avr >= 20.0):
             fits = self.temp_wearingFits[2]
@@ -92,8 +92,10 @@ class Weather():
             fits = self.temp_wearingFits[5]
         elif (avr >= 5.0):
             fits = self.temp_wearingFits[6]
-        elif (avr <= 4.0):
+        elif (avr >= 1.0):
             fits = self.temp_wearingFits[7]
+        else:
+            fits = self.temp_wearingFits[8]
         
         return fits
 
