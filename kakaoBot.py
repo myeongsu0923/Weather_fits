@@ -91,35 +91,10 @@ def Message():
             "template" : {
                 "outputs" : [
                     {
-        "listCard": {
-          "header": {
-            "title": "추천 노래"
-          },
-          "items": [
-            {
-              "title": "노래 제목",
-              "imageUrl": "https://f4.bcbits.com/img/0025898708_10.jpg",
-              "link": {
-                "web": ""
-              }
-            },
-              {
-              "title": "노래 제목",
-              "imageUrl": "https://t4.ftcdn.net/jpg/01/02/30/35/360_F_102303501_bSKnufhPX10y9xb1JT5Y6KcXxV43vtGN.jpg",
-              "link": {
-                "web": ""
-              }
-            },
-              {
-              "title": "노래 제목",
-              "imageUrl": "https://i.dlpng.com/static/png/6719521_preview.png",
-              "link": {
-                "web": ""
-              }
-            }
-          ],
-        }
-      }
+                    "simpleText": {
+                        "text": musicSearch()
+                    }
+                }
                 ]
             }
         }
