@@ -1,5 +1,5 @@
 import requests
-import re
+import random
 
 api_key = 'b57c89bcdaa776e98f2de85501de1a4b'
 totals = list()
@@ -24,23 +24,15 @@ def storeSearch(region):
 
     return total
 
-# * testing
-stores = storeSearch('대구대학교 정문')
 
-'''
-print(stores[0][0])
-print(stores[0][1])
-print(stores[0][2])
-print(stores[1][0])
-print(stores[1][1])
-print(stores[1][2])
-print(stores[2][0])
-print(stores[2][1])
-print(stores[2][2])
-'''
+def musicSearch():
+    with open('hello.txt', mode='r', encoding="utf-8") as musics:
+        music = list(musics)
+    
+    recommandMusic = random.choice(music)
 
-'''
-for store in stores:
-    for i in store:
-        print(i)
-    print("\n")'''
+    return recommandMusic
+
+
+#testing
+#print(musicSearch())
