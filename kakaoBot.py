@@ -78,19 +78,52 @@ def Message():
     content = content['userRequest']['utterance'] #사용자 발화값 받아오기
     content=content.replace("\n","")
     
-    con = ""
-    
-    for store in stores:
-        for i in store:
-            con += i + "\n"
-        con += '\n'
-    
     global outputFits
     global outputDust
     global outputSun
     
     if content.find("옷") != -1 or content.find("외출복") != -1 or content.find("복장") != -1:
         content = "옷"
+    
+    if content == u"노래 추천":
+        dataSend = {
+            "version" : "2.0",
+            "template" : {
+                "outputs" : [
+                    {
+        "listCard": {
+          "header": {
+            "title": "추천 노래"
+          },
+          "items": [
+            {
+              "title": "노래 제목",
+              "imageUrl": "https://f4.bcbits.com/img/0025898708_10.jpg",
+              "link": {
+                "web": ""
+              }
+            },
+              {
+              "title": "노래 제목",
+              "imageUrl": "https://f4.bcbits.com/img/0025898708_10.jpg",
+              "link": {
+                "web": ""
+              }
+            },
+              {
+              "title": "노래 제목",
+              "imageUrl": "https://f4.bcbits.com/img/0025898708_10.jpg",
+              "link": {
+                "web": ""
+              }
+            }
+          ],
+        }
+      }
+                ]
+            }
+        }
+        return jsonify(dataSend)
     
     if outputFits == "" or outputDust == "" or outputSun == "":
         dataSend = {
@@ -106,6 +139,46 @@ def Message():
             }
         }
         return jsonify(dataSend)
+    
+    '''if content == u"노래":
+        dataSend = {
+            "version" : "2.0",
+            "template" : {
+                "outputs" : [
+                    {
+        "listCard": {
+          "header": {
+            "title": "추천 노래"
+          },
+          "items": [
+            {
+              "title": "노래 제목",
+              "imageUrl": "https://www.pngitem.com/pimgs/m/48-481256_transparent-music-notes-music-staff-blue-hd-png.png",
+              "link": {
+                "web": ""
+              }
+            },
+              {
+              "title": "노래 제목",
+              "imageUrl": "https://www.pngitem.com/pimgs/m/48-481256_transparent-music-notes-music-staff-blue-hd-png.png",
+              "link": {
+                "web": ""
+              }
+            },
+              {
+              "title": "노래 제목",
+              "imageUrl": "https://www.pngitem.com/pimgs/m/48-481256_transparent-music-notes-music-staff-blue-hd-png.png",
+              "link": {
+                "web": ""
+              }
+            }
+          ],
+        }
+      }
+                ]
+            }
+        }
+        return jsonify(dataSend)'''
     
     if content == u"미세먼지":
         dataSend = {
