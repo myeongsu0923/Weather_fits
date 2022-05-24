@@ -105,14 +105,14 @@ def Message():
             },
               {
               "title": "노래 제목",
-              "imageUrl": "https://f4.bcbits.com/img/0025898708_10.jpg",
+              "imageUrl": "https://t4.ftcdn.net/jpg/01/02/30/35/360_F_102303501_bSKnufhPX10y9xb1JT5Y6KcXxV43vtGN.jpg",
               "link": {
                 "web": ""
               }
             },
               {
               "title": "노래 제목",
-              "imageUrl": "https://f4.bcbits.com/img/0025898708_10.jpg",
+              "imageUrl": "https://i.dlpng.com/static/png/6719521_preview.png",
               "link": {
                 "web": ""
               }
@@ -139,46 +139,6 @@ def Message():
             }
         }
         return jsonify(dataSend)
-    
-    '''if content == u"노래":
-        dataSend = {
-            "version" : "2.0",
-            "template" : {
-                "outputs" : [
-                    {
-        "listCard": {
-          "header": {
-            "title": "추천 노래"
-          },
-          "items": [
-            {
-              "title": "노래 제목",
-              "imageUrl": "https://www.pngitem.com/pimgs/m/48-481256_transparent-music-notes-music-staff-blue-hd-png.png",
-              "link": {
-                "web": ""
-              }
-            },
-              {
-              "title": "노래 제목",
-              "imageUrl": "https://www.pngitem.com/pimgs/m/48-481256_transparent-music-notes-music-staff-blue-hd-png.png",
-              "link": {
-                "web": ""
-              }
-            },
-              {
-              "title": "노래 제목",
-              "imageUrl": "https://www.pngitem.com/pimgs/m/48-481256_transparent-music-notes-music-staff-blue-hd-png.png",
-              "link": {
-                "web": ""
-              }
-            }
-          ],
-        }
-      }
-                ]
-            }
-        }
-        return jsonify(dataSend)'''
     
     if content == u"미세먼지":
         dataSend = {
