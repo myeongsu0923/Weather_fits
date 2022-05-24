@@ -78,38 +78,19 @@ def Message():
     content = content['userRequest']['utterance'] #사용자 발화값 받아오기
     content=content.replace("\n","")
     
+    con = ""
+    
+    for store in stores:
+        for i in store:
+            con += i + "\n"
+        con += '\n'
+    
     global outputFits
     global outputDust
     global outputSun
     
     if content.find("옷") != -1 or content.find("외출복") != -1 or content.find("복장") != -1:
         content = "옷"
-    
-    if content == u"편의점":
-        dataSend = {
-            "version" : "2.0",
-            "template" : {
-                "outputs" : [
-                    {
-        "listCard": {
-          "header": {
-            "title": "대구대 근처 편의점"
-          },
-          "items": [
-            {
-              "title": stores[0][0],
-              "description": stores[0][1],
-              "link": {
-                "web": stores[0][2]
-              }
-            }
-          ],
-        }
-      }
-                ]
-            }
-        }
-        return jsonify(dataSend)
     
     if outputFits == "" or outputDust == "" or outputSun == "":
         dataSend = {
