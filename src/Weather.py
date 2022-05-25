@@ -94,7 +94,8 @@ class Weather():
             fits = self.temp_wearingFits[6]
         elif (avr <= 4.0):
             fits = self.temp_wearingFits[7]
-        
+        else:
+            fits = self.temp_wearingFits[8]
         return fits
 
     def getWeather(self):
