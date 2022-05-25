@@ -29,9 +29,10 @@ def weatherPrint():
     outputDust = "[미세먼지 수치]\n"
     outputDust += temp.getDust()
     
-    global outputSun
-    outputSun = "[자외선]\n"
-    outputSun += temp.getSunlight()
+# 
+#     global outputSun
+#     outputSun = "[자외선]\n"
+#     outputSun += temp.getSunlight()
     
     global outputFits
     outputFits = "[오늘 기온에 맞는 옷 추천]\n"
@@ -130,20 +131,20 @@ def Message():
         }
         return jsonify(dataSend)
     
-    if content == u"자외선":
-        dataSend = {
-            "version" : "2.0",
-            "template" : {
-                "outputs" : [
-                    {
-                        "simpleText" : {
-                            "text" : outputSun
-                        }
-                    }
-                ]
-            }
-        }
-        return jsonify(dataSend)
+#     if content == u"자외선":
+#         dataSend = {
+#             "version" : "2.0",
+#             "template" : {
+#                 "outputs" : [
+#                     {
+#                         "simpleText" : {
+#                             "text" : outputSun
+#                         }
+#                     }
+#                 ]
+#             }
+#         }
+#         return jsonify(dataSend)
     
     if content == u"옷":
         dataSend = {
