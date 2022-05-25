@@ -85,6 +85,21 @@ def Message():
     if content.find("옷") != -1 or content.find("외출복") != -1 or content.find("복장") != -1:
         content = "옷"
     
+    if content == u"노래 추천":
+        dataSend = {
+            "version" : "2.0",
+            "template" : {
+                "outputs" : [
+                    {
+                    "simpleText": {
+                        "text": musicSearch()
+                    }
+                }
+                ]
+            }
+        }
+        return jsonify(dataSend)
+    
     if outputFits == "" or outputDust == "" or outputSun == "":
         dataSend = {
             "version" : "2.0",

@@ -33,7 +33,7 @@ class Weather():
 
         self.tempSearch()
         self.dustSearch()
-        self.sunLight()
+        #self.sunLight()
     
     def tempSearch(self):
         req = self.session.get(self.addr)
@@ -44,9 +44,9 @@ class Weather():
         t_ary = list(table.stripped_strings)
 
         self.tempResult = ("[" + self.area + "(" + location.text + ")" + " 날씨 검색 결과]\n" 
-            + "오전 - " + t_ary[11][:-1] + "℃ (" + t_ary[5] + ", 강수확률 : " + t_ary[4] + ")\n"
-            + "오후 - " + t_ary[14][:-1] + "℃ (" + t_ary[6] + ", 강수확률 : " + t_ary[9] + ")\n"
-            + "현재 날씨상태 - " + currentWeather.text + self.umbrella(currentWeather.text))
+            + "🌈오전 - " + t_ary[11][:-1] + "℃ (" + t_ary[5] + ", 💧강수확률 : " + t_ary[4] + ")\n"
+            + "🌈오후 - " + t_ary[14][:-1] + "℃ (" + t_ary[6] + ", 💧강수확률 : " + t_ary[9] + ")\n"
+            + "🌡현재 날씨상태 - " + currentWeather.text + self.umbrella(currentWeather.text))
 
         self.fits = self.todayRecommandFits(t_ary)
 
@@ -56,8 +56,8 @@ class Weather():
         air = soupAir.find(class_='top_area')
         t_aryAir = list(air.stripped_strings)
 
-        self.dustResult =  ("미세먼지 - " + t_aryAir[15] + "㎍/㎥ (" + t_aryAir[16] + ")\n"
-                            + "초미세먼지 - " + t_aryAir[32] + "㎍/㎥ (" + t_aryAir[33] + ")\n")
+        self.dustResult =  ("😷미세먼지 - " + t_aryAir[15] + "㎍/㎥ (" + t_aryAir[16] + ")\n"
+                            + "😷초미세먼지 - " + t_aryAir[32] + "㎍/㎥ (" + t_aryAir[33] + ")\n")
 
 
     def sunLight(self):
@@ -66,13 +66,13 @@ class Weather():
         sunlight = soup.find(class_="today_chart_list")
         s_ary = list(sunlight.stripped_strings)
 
-        self.sunResult = s_ary[5]
+        self.sunResult = "☀" + s_ary[5]
 
     def umbrella(self, currentWeather):
         if currentWeather == '비':
-            return "\n*비오니깐 우산챙겨요!"
+            return "\n*☔비오니깐 우산챙겨요!"
         else:
-            return "\n*우산이 필요없을거 같아요!"
+            return "\n*☀🌤우산이 필요없을거 같아요!"
 
     def todayRecommandFits(self, t_ary):
         fits = list()
