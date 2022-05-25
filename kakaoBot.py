@@ -6,10 +6,10 @@ kakaoBot = Flask(__name__)
 
 global outputFits #복장 목록
 global outputDust
-global outputSun
+#global outputSun
 outputFits = ""
 outputDust = ""
-outputSun = ""
+#outputSun = ""
 
 @kakaoBot.route("/")
 def hello():
@@ -81,7 +81,7 @@ def Message():
     
     global outputFits
     global outputDust
-    global outputSun
+#    global outputSun
     
     if content.find("옷") != -1 or content.find("외출복") != -1 or content.find("복장") != -1:
         content = "옷"
@@ -101,7 +101,7 @@ def Message():
         }
         return jsonify(dataSend)
     
-    if outputFits == "" or outputDust == "" or outputSun == "":
+    if outputFits == "" or outputDust == "":
         dataSend = {
             "version" : "2.0",
             "template" : {
