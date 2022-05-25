@@ -35,7 +35,7 @@ def weatherPrint():
 #     outputSun += temp.getSunlight()
     
     global outputFits
-    outputFits = "[오늘 기온에 맞는 옷 추천]\n"
+    outputFits = "[오늘 기온에 맞는 옷 추천👕]\n"
     for fits in temp.getFits():
         outputFits += fits.replace('"','').strip() + "\n"
     
